@@ -1,0 +1,103 @@
+﻿<Application x:Class="NotesKrizak.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:NotesKrizak"
+             >
+    <Application.Resources>
+        <Style TargetType="Button" x:Key="MainButtonStyle">
+            <Setter Property="Width" Value="180"/>
+            <Setter Property="Height" Value="60"/>
+            <Setter Property="Margin" Value="0 15 0 0"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="26"/>
+            <Setter Property="FontWeight" Value="Medium"/>
+            <Setter Property="Background" Value="#00b4d8"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderThickness="0" CornerRadius="16"
+                                Width="180" Height="60">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <EventTrigger RoutedEvent="Button.MouseEnter">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ColorAnimation To="#0077b6"
+                                            Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                                            Duration="0:0:0.45"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="Button.MouseLeave">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ColorAnimation To="#00b4d8"
+                                            Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                                            Duration="0:0:0.25"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="StackPanel" x:Key="MainNotePanel">
+            <Setter Property="Width" Value="230"/>
+            <Setter Property="Height" Value="160"/>
+            <Setter Property="Margin" Value="0 10 0 10"/>
+        </Style>
+        <Style TargetType="Border" x:Key="MainNoteBorder">
+            <Setter Property="Width" Value="230"/>
+            <Setter Property="Height" Value="160"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="CornerRadius" Value="16"/>
+
+        </Style>
+
+        <Style TargetType="StackPanel" x:Key="InnerNotePanel">
+            <Setter Property="Width" Value="215"/>
+            <Setter Property="Height" Value="145"/>
+        </Style>
+        <Style TargetType="TextBlock" x:Key="NoteTitleText">
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="TextAlignment" Value="Left"/>
+            <Setter Property="Width" Value="215"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="MaxWidth" Value="215"/>
+            <Setter Property="MaxHeight" Value="30"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+        </Style>
+        <Style TargetType="Border" x:Key="InnerNoteBorder">
+            <Setter Property="Width" Value="215"/>
+            <Setter Property="Height" Value="145"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect BlurRadius="0" Opacity="0"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="TextBlock" x:Key="NoteContentText">
+            <Setter Property="Width" Value="215"/>
+            <Setter Property="Height" Value="100"/>
+            <Setter Property="MaxHeight" Value="100"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Opacity" Value="0.9"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="FontWeight" Value="Medium"/>
+        </Style>
+        <Style TargetType="TextBlock" x:Key="NoteCreateDateText">
+            <Setter Property="Width" Value="215"/>
+            <Setter Property="MaxWidth" Value="215"/>
+            <Setter Property="FontWeight" Value="Light"/>
+            <Setter Property="Opacity" Value="0.7"/>
+            <Setter Property="Margin" Value="2 0 0 0"/>
+        </Style>
+    </Application.Resources>
+</Application>
