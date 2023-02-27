@@ -7,8 +7,8 @@
         xmlns:viewmodel="clr-namespace:NotesKrizak.ViewModel"
         xmlns:view="clr-namespace:NotesKrizak.View"
         mc:Ignorable="d"
-        Title="Notes" Height="600" Width="400">
-    <Grid>
+        Title="Notes" Height="600" Width="400" Name="myMainWindow">
+    <Grid Name="MainGrid" SizeChanged="MainGrid_SizeChanged">
         <ContentControl Content="{Binding CurrentViewModel}">
             <ContentControl.Resources>
                 <DataTemplate DataType="{x:Type viewmodel:NotesViewModel}">
@@ -22,5 +22,12 @@
                 </DataTemplate>
             </ContentControl.Resources>
         </ContentControl>
+        <Grid.LayoutTransform>
+            <ScaleTransform x:Name="ApplicationScaleTransform"
+                        CenterX="0"
+                        CenterY="0"
+                        ScaleX="{Binding ElementName=myMainWindow, Path=ScaleValue}"
+                        ScaleY="{Binding ElementName=myMainWindow, Path=ScaleValue}" />
+        </Grid.LayoutTransform>
     </Grid>
 </Window>
