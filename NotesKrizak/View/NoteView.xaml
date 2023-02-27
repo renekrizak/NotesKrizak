@@ -19,12 +19,12 @@
                     <StackPanel Style="{StaticResource MainNotePanel}">
                         <Border Style="{StaticResource MainNoteBorder}">
                             <StackPanel>
-                                <Button Style="{StaticResource MainNoteButton}" Command="{Binding OpenNote}">
+                                <Button Style="{StaticResource MainNoteButton}" Command="{Binding OpenNote}" CommandParameter="{Binding ElementName=IDtb, Path=Text}">
                                     <StackPanel Style="{StaticResource InnerNotePanel}">
                                         <TextBlock Style="{StaticResource NoteTitleText}" Text="{Binding noteTitle}"/>
                                         <TextBlock Style="{StaticResource NoteContentText}" Text="{Binding noteContent}"/>
                                         <TextBlock Style="{StaticResource NoteCreateDateText}" Text="{Binding noteCreationDate}"/>
-                                        <Label Content="{Binding ID}" FontSize="1" Height="2" Width="2" MaxHeight="2" MaxWidth="2"/>
+                                        <TextBlock Text="{Binding ID}" FontSize="1" Height="2" Width="2" MaxHeight="2" MaxWidth="2" Name="IDtb"/>
                                     </StackPanel>
                                 </Button>
                             </StackPanel>

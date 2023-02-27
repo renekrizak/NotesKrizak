@@ -19,7 +19,9 @@ namespace NotesKrizak.Commands
 
         public override void Execute(object parameter)
         {
-            _navigationStore.CurrentViewModel = new DeleteViewNoteViewModel(_navigationStore, "2");
+            string value = (string)parameter;
+            
+            _navigationStore.CurrentViewModel = new DeleteViewNoteViewModel(_navigationStore, value);
         }
     }
 }

@@ -92,6 +92,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Commands\CommandBase.cs" />
+    <Compile Include="Commands\DeleteNoteGoBack.cs" />
+    <Compile Include="Commands\NavigateBackNoteView.cs" />
     <Compile Include="Commands\NavigateCreateNote.cs" />
     <Compile Include="Commands\NavigateNoteView.cs" />
     <Compile Include="Commands\OpenNote.cs" />

@@ -13,10 +13,12 @@ namespace NotesKrizak.ViewModel
     public class CreateNoteViewModel : ViewModelBase
     {
         public ICommand NavigateNoteView { get; }
+        public ICommand NavigateBackNoteView { get; }
 
         public CreateNoteViewModel(NavigationStore navigationStore)
         {
             NavigateNoteView = new NavigateNoteView(navigationStore);
+            NavigateBackNoteView = new NavigateBackNoteView(navigationStore);
         }
     }
 }

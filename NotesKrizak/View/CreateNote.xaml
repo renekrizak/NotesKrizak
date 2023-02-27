@@ -16,30 +16,46 @@
             <RowDefinition Height="12*"/>
             <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
-        <Label Content="Nazov" Grid.Row="0" FontSize="32" Foreground="Black"
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.ColumnSpan="2">
+            <Label Content="Nazov" Grid.Row="0" FontSize="32" Foreground="Black"
                HorizontalAlignment="Center" FontWeight="Medium"/>
-        <Border Width="260" Height="40" BorderThickness="2" CornerRadius="8"
+            <Border Width="260" Height="40" BorderThickness="2" CornerRadius="8"
                 BorderBrush="Black" Margin="0 20 0 0">
-            <TextBox Grid.Row="0" Width="250" Height="32" BorderThickness="0" FontSize="18"
+                <TextBox Grid.Row="0" Width="250" Height="32" BorderThickness="0" FontSize="18"
                      Name="noteTitle"/>
-        </Border>
-        
-        <Label Grid.Row="1" VerticalAlignment="Top" Content="Content" HorizontalAlignment="Center"
-               FontSize="32" FontWeight="Medium"/>
-        <Border Grid.Row="1" Width="320" Height="240" BorderThickness="2" CornerRadius="8"
-                BorderBrush="Black">
-            <TextBox Grid.Row="1" FontSize="18" TextWrapping="Wrap"
-                     Name="noteContent"/>
-        </Border>
+            </Border>
+        </StackPanel>
 
-        <Button Grid.Row="2" Style="{StaticResource MainButtonStyle}" HorizontalAlignment="Center" Margin="0"
+        <StackPanel Grid.Row="1" Grid.ColumnSpan="2">
+            <Label Grid.Row="1" VerticalAlignment="Top" Content="Content" HorizontalAlignment="Center"
+               FontSize="32" FontWeight="Medium"/>
+            <Border Grid.Row="1" Width="320" Height="240" BorderThickness="2" CornerRadius="8"
+                BorderBrush="Black">
+                <TextBox Grid.Row="1" FontSize="18" TextWrapping="Wrap"
+                     Name="noteContent"/>
+            </Border>
+        </StackPanel>
+
+        
+            <Button Grid.Row="2" Grid.Column="2" Style="{StaticResource SaveButton}" HorizontalAlignment="Center" Margin="0"
                 Content="Uloz" Command="{Binding NavigateNoteView}">
-            <Button.CommandParameter>
-                <MultiBinding Converter="{StaticResource SaveNoteConverter}">
-                    <Binding ElementName="noteTitle" Path="Text"/>
-                    <Binding ElementName="noteContent" Path="Text"/>
-                </MultiBinding>
-            </Button.CommandParameter>
-        </Button>
+                <Button.CommandParameter>
+                    <MultiBinding Converter="{StaticResource SaveNoteConverter}">
+                        <Binding ElementName="noteTitle" Path="Text"/>
+                        <Binding ElementName="noteContent" Path="Text"/>
+                    </MultiBinding>
+                </Button.CommandParameter>
+            </Button>
+
+        <Button Grid.Row="2" Grid.Column="0" Style="{StaticResource MainButtonStyle}" HorizontalAlignment="Center" Margin="0"
+                Content="Back" Command="{Binding NavigateBackNoteView}"/>
+
+
+
+
     </Grid>
 </UserControl>

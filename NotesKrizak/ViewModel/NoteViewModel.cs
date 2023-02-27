@@ -27,6 +27,8 @@ namespace NotesKrizak.ViewModel
             return ConfigurationManager.ConnectionStrings[id].ConnectionString;
         }
 
+
+
         public NotesViewModel(NavigationStore navigationStore) 
         {
             userNotes = new ObservableCollection<NoteModel>();

@@ -17,21 +17,26 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <StackPanel Grid.Row="1" Grid.ColumnSpan="2">
-            <Border Width="380" Height="440" VerticalAlignment="Center" Background="Transparent"
-                    BorderBrush="Black" BorderThickness="2" CornerRadius="12">
-                <StackPanel>
-                    <TextBlock Width="370" Height="60" FontSize="22" FontWeight="Bold"
-                               TextWrapping="Wrap"
-                               Text="Sample test sample test sample test sample"/>
-                    <TextBlock Width="370" Height="370" TextWrapping="Wrap"
-                               FontSize="15"
+        <ItemsControl ItemsSource="{Binding userNotes}" Grid.Row="1" Grid.ColumnSpan="2">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Grid.Row="1" Grid.ColumnSpan="2">
+                        <Border Style="{StaticResource NoteViewBorder}">
+                            <StackPanel>
+                                <TextBlock Style="{StaticResource NoteViewTitle}"
+                               Text="{Binding noteTitle}"/>
+                                <TextBlock Style="{StaticResource NoteViewContent}"
+                                Text="{Binding noteContent}"
                                />
-                </StackPanel>
-            </Border>
-            <TextBlock Width="370" Text=""/>
-        </StackPanel>
-        <Button Grid.Row="2" Grid.Column="0" Style="{StaticResource MainButtonStyle}" Content="Back"/>
-        <Button Grid.Row="2" Grid.Column="1" Style="{StaticResource MainButtonStyle}" Content="Delete"/>
+                            </StackPanel>
+                        </Border>
+                        <TextBlock Width="370" Text="{Binding noteCreationDate}" FontSize="12"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>        
+
+        <Button Grid.Row="2" Grid.Column="0" Style="{StaticResource MainButtonStyle}" Content="Back" Command="{Binding NavigateBackNoteView}"/>
+        <Button Grid.Row="2" Grid.Column="1" Style="{StaticResource DeleteButton}" Content="Delete" Command="{Binding DeleteNoteGoBack}"/>
     </Grid>
 </UserControl>
