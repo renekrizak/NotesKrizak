@@ -17,8 +17,8 @@
                 <DataTemplate DataType="{x:Type viewmodel:CreateNoteViewModel}">
                     <view:CreateNote/>
                 </DataTemplate>
-                <DataTemplate DataType="{x:Type viewmodel:EditDeleteViewModel}">
-                    <view:EditDeleteView/>
+                <DataTemplate DataType="{x:Type viewmodel:DeleteViewNoteViewModel}">
+                    <view:DeleteViewNote/>
                 </DataTemplate>
             </ContentControl.Resources>
         </ContentControl>

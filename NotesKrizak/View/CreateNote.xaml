@@ -4,8 +4,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:NotesKrizak.View"
+             xmlns:converters="clr-namespace:NotesKrizak.Converters"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="400" Background="White">
+    <UserControl.Resources>
+        <converters:SaveNoteConverter x:Key="SaveNoteConverter"/>
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="4*"/>
@@ -16,17 +20,26 @@
                HorizontalAlignment="Center" FontWeight="Medium"/>
         <Border Width="260" Height="40" BorderThickness="2" CornerRadius="8"
                 BorderBrush="Black" Margin="0 20 0 0">
-            <TextBox Grid.Row="0" Width="250" Height="32" BorderThickness="0" FontSize="18"/>
+            <TextBox Grid.Row="0" Width="250" Height="32" BorderThickness="0" FontSize="18"
+                     Name="noteTitle"/>
         </Border>
         
         <Label Grid.Row="1" VerticalAlignment="Top" Content="Content" HorizontalAlignment="Center"
                FontSize="32" FontWeight="Medium"/>
         <Border Grid.Row="1" Width="320" Height="240" BorderThickness="2" CornerRadius="8"
                 BorderBrush="Black">
-            <TextBox Grid.Row="1" FontSize="18" TextWrapping="Wrap"/>
+            <TextBox Grid.Row="1" FontSize="18" TextWrapping="Wrap"
+                     Name="noteContent"/>
         </Border>
-        
+
         <Button Grid.Row="2" Style="{StaticResource MainButtonStyle}" HorizontalAlignment="Center" Margin="0"
-                Content="Uloz" Command="{Binding NavigateNoteView}"/>
+                Content="Uloz" Command="{Binding NavigateNoteView}">
+            <Button.CommandParameter>
+                <MultiBinding Converter="{StaticResource SaveNoteConverter}">
+                    <Binding ElementName="noteTitle" Path="Text"/>
+                    <Binding ElementName="noteContent" Path="Text"/>
+                </MultiBinding>
+            </Button.CommandParameter>
+        </Button>
     </Grid>
 </UserControl>

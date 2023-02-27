@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace NotesKrizak.View
 {
     /// <summary>
-    /// Interaction logic for EditDeleteView.xaml
+    /// Interaction logic for DeleteViewNote.xaml
     /// </summary>
-    public partial class EditDeleteView : UserControl
+    public partial class DeleteViewNote : UserControl
     {
-        public EditDeleteView()
+        public DeleteViewNote()
         {
             InitializeComponent();
         }
